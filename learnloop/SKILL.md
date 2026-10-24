@@ -43,6 +43,18 @@ in "Finding the workspace" in `references/notion-schema.md`: use
 at all, write the note in the chat, say it was not saved, and tell the learner
 to connect Notion in their app's connector settings.
 
+The skill needs these Notion tools: search, fetch, create pages, update page,
+query data sources, create database and create view (in the official Notion
+connector they are named `notion-search`, `notion-fetch`,
+`notion-create-pages`, `notion-update-page`, `notion-query-data-sources`,
+`notion-create-database`, `notion-create-view`). Some apps load connector
+tools only on request. If only listing or calendar tools are visible, search
+for the missing ones by those exact names (for example a tool search for
+"notion-fetch notion-create-pages notion-update-page") before deciding they
+are unavailable. If they still do not load, say which ones are missing, give
+the learner the content to paste, and suggest starting a new chat, since
+tool loading is per chat.
+
 ## Command: setup
 
 Run when the user asks to set up, or when no `LearnLoop` workspace is
