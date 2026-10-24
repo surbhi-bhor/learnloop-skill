@@ -1,0 +1,32 @@
+You said:
+What does idempotent mean for a data load?
+
+ChatGPT said:
+An idempotent load gives the same result whether it runs once or many times. Running it twice must not create duplicates.
+
+You said:
+So retrying a failed load makes it idempotent?
+
+ChatGPT said:
+Not quite. Retrying is only safe if the load is already idempotent. A plain INSERT retried after a partial failure can double-count rows.
+
+You said:
+Explain it simpler, give me an example
+
+ChatGPT said:
+Think of a light switch set to "on". Pressing "set to on" twice leaves it on. A toggle pressed twice turns it off. Loads should behave like "set to on": MERGE on a key, or delete-then-insert a partition.
+
+You said:
+I still don't get how MERGE makes the load idempotent again
+
+ChatGPT said:
+MERGE matches incoming rows to existing rows by key. Matched rows are updated, new rows are inserted, so a rerun updates the same rows instead of adding copies.
+
+You said:
+What is a watermark in streaming?
+
+ChatGPT said:
+A watermark is the engine's estimate of how far event time has progressed, used to decide when late data can be dropped.
+
+You said:
+Thanks, write that as a table
