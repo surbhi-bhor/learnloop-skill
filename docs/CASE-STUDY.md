@@ -217,8 +217,8 @@ Nothing below is claimed yet; these are the targets for the validation phase.
 | Does it lead to practice? | Topics with at least one practice attempt | Tracked over weeks |
 | Do weak spots get fixed? | Weak spots closed by a delayed teach-back | Tracked over weeks |
 
-The baseline (manual timings and three annotated chats where I got stuck, plus
-one where I did not) is set up in [`baseline-log.md`](baseline-log.md).
+The baseline is manual timings plus three annotated chats where I got stuck
+and one where I did not.
 
 ## What I learned
 

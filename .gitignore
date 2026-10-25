@@ -1,11 +1,7 @@
 learnloop/config.local.json
 private-chats/
 __pycache__/
-**/__pycache__/
 .pytest_cache/
 *-workspace/
-Learn-to-Apply Loop Full Project Plan.pdf
 dist/
 *.stackdump
-docs/ISSUES.md
-docs/UNIQUENESS-PLAN.md

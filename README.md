@@ -37,7 +37,6 @@ flowchart LR
 - [Troubleshooting](#troubleshooting)
 - [Privacy](#privacy)
 - [Project layout](#project-layout)
-- [Development](#development)
 - [Status](#status)
 
 ## What you get
@@ -272,32 +271,15 @@ learnloop/                 the skill (this is what gets installed)
   references/              note template, Notion schema, rubrics, role packs
   scripts/                 transcript parser, struggle scorer, metrics report
   agents/openai.yaml       display info for Codex
-AGENTS.md, CLAUDE.md,      adapters when this repo is opened in Codex,
-GEMINI.md                  Claude Code or Gemini CLI
-tests/                     script tests and a trigger check
-tools/package_skill.py     validates the skill and builds the zip
-docs/                      case study, testing and release checklists
+docs/CASE-STUDY.md         why this project exists and how it was designed
 ```
-
-## Development
-
-```
-python -m pytest -q                      # script tests
-python tools/package_skill.py --public   # build dist/learnloop-public.zip
-```
-
-`tools/package_skill.py` checks the frontmatter, description length, file
-encoding and referenced files before it builds the zip. Without `--public` the
-zip also contains your local `config.local.json` (your Notion IDs); keep that
-version private. Save files as UTF-8 without a byte-order mark.
 
 ## Status
 
-Version 0.1. The scripts are tested and the full flow has been run end to end
-on a synthetic chat. Struggle scoring, cross-tool activation and style
-tracking still need checking on real conversations; see
-[`docs/TESTING.md`](docs/TESTING.md) and [`docs/baseline-log.md`](docs/baseline-log.md).
-Role packs are starting points, not verified job requirements.
+Version 0.1. The full flow has been run end to end on a synthetic chat.
+Struggle scoring, cross-tool activation and style tracking are still being
+checked on real conversations. Role packs are starting points, not verified
+job requirements.
 
 Issues and ideas are welcome in
 [GitHub Issues](https://github.com/surbhi-bhor/learnloop-skill/issues).
