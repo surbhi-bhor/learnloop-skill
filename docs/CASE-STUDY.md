@@ -16,9 +16,36 @@ from a single command: "log this in notion".
 | **Role** | Designer and builder |
 | **Target user** | Anyone learning technical topics through AI chats, starting with me (aiming at senior BI and data engineering roles) |
 | **Built with** | Agent Skills format, Notion MCP, Python standard library, built with Claude Code and Codex |
-| **Status** | v0.1, tested on synthetic data, real-chat validation in progress |
+| **Status** | v0.1, run end to end in the Claude app with Notion; multi-week validation in progress |
 
-## The problem
+## Problem statement
+
+People who learn technical topics through AI chats understand the topic in
+the moment and lose most of it within a week. The chat is never turned into
+something they can study again, the moment they got stuck is not recorded,
+the same doubt comes back unnoticed under a different topic, and reviewing,
+practicing and applying the topic depend on remembering to do it.
+
+**How might we turn a learning chat into lasting, job-ready understanding
+without asking the learner to remember any extra step?**
+
+## Why I built it
+
+I am preparing for senior BI and data engineering roles, and most of my
+learning happens in conversations with Claude and ChatGPT. I noticed I was
+re-asking questions I had already asked weeks earlier, such as how consumer
+groups split messages, and I could not tell whether I had ever understood
+them. My notes, when I made them at all, were summaries that did not help me
+answer an interview question or design a pipeline.
+
+The tools I tried each solved one piece: note apps store text, flashcard
+apps schedule review, and AI chats explain well. None of them knew where I
+had been stuck, and none of them connected a concept to the job I wanted.
+Nothing reminded me what to do next. I wanted one step at the end of a chat
+that does all of it, inside the tools I already use, with data I can trust
+because nothing is invented.
+
+## The problem in detail
 
 My learning routine had five failures, and each one was small enough to
 ignore on its own:
@@ -201,6 +228,25 @@ from something that went wrong or felt missing.
 | On the first real repeat, the skill spotted it but explained first and quoted the old rule, leaving the recall check for afterwards | It now asks first, waits, tests recall before explaining, and shows the old rule only after I try |
 | In a full end-to-end run, "teach me kafka consumer groups" was answered without loading the skill, so the recall check never ran, and a repeat doubt asked mid-chat was only noticed at `log this` | The skill now loads on any teach request or "I'm stuck", and checks Weak Spots for a repeat at the moment of confusion, not only when logging. A one-line reminder was not enough; it took an explicit step in the teach command (read Weak Spots, ask one recall question, wait) before the re-test passed |
 | The skill asked whether my own Profile page might belong to someone else | The Profile in the learner's own workspace is treated as theirs |
+
+## Evidence from a real run
+
+On 2026-10-26 I ran the whole loop in the Claude app with Notion connected,
+with one doubt repeated on purpose across three chats: Kafka, then Spark
+reading from Kafka, then Debezium CDC. The skill:
+
+- wrote the first note with two "Where I got stuck" boxes quoting my own
+  misconception ("a consumer group is basically a copy of the topic"), two
+  diagrams, an In production section and 12 flashcards, in 4.8 minutes;
+- matched the Spark doubt to the existing weak spot by meaning, not by topic
+  name, and raised Times stuck to 2 instead of creating a duplicate;
+- caught the Debezium doubt mid-chat, asked me to recall the rule before
+  explaining, and raised Times stuck to 3;
+- put that repeat doubt first when I asked what was due.
+
+The run also found three bugs, fixed the same day (the last two rows of the
+iterations table). Screenshots and the full note are in
+[examples/kafka-consumer-groups](../examples/kafka-consumer-groups/).
 
 ## How it works
 

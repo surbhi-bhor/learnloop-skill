@@ -9,7 +9,9 @@ got stuck, adds interview questions and a drill for your target role, and
 schedules your first review for tomorrow. Then it tells you the next step, so
 you never have to remember what comes after a note.
 
-Why this exists and how it was designed: [docs/CASE-STUDY.md](docs/CASE-STUDY.md).
+**See it in action:** [a real run on Kafka consumer groups](examples/kafka-consumer-groups/),
+with screenshots of the chat and the Notion pages, where the same doubt comes
+back in three chats and gets caught.
 
 ```mermaid
 flowchart LR
@@ -22,8 +24,45 @@ flowchart LR
     G -->|weak spot closed| A
 ```
 
+## The problem
+
+People learn more and more technical topics by chatting with AI. The
+explanations are good, but most of it is gone within a week:
+
+- **Copying is slow, so it gets skipped.** Turning a chat into notes by hand
+  takes long enough that most good chats are never saved.
+- **Saved chats don't teach.** A pasted chat is a trail of partial answers. A
+  week later it reminds you that you read about something; it doesn't teach
+  you the topic again.
+- **The hardest part gets lost.** The most useful moment in a learning chat
+  is where you got stuck and what finally made it click. Tidy notes remove
+  exactly that.
+- **The same doubt comes back unnoticed.** You ask the same question a week
+  later under a different topic, and nothing tells you it is the same gap.
+- **Learning stays separate from the job.** You understand a concept but
+  don't know how it is asked in an interview or used in production.
+- **The next step depends on memory.** Reviewing, practicing and applying a
+  topic only happen if you remember to do them, and mostly you don't.
+
+## Why LearnLoop
+
+LearnLoop is built around one idea: **the learner should not have to remember
+the next step.** One command turns the chat into a real study note, records
+where you were stuck in your own words, creates practice for your target
+role and schedules the review. Each reply ends with one suggested next
+action. When an old doubt comes back, it notices and asks you to recall the
+answer before explaining again, because trying to recall is what makes it
+stick.
+
+It works inside the AI tools people already use, writes to Notion, which
+they already own, and never invents history, numbers or job requirements.
+
+The full story, design decisions and what changed after real use:
+[docs/CASE-STUDY.md](docs/CASE-STUDY.md).
+
 ## Contents
 
+- [Example](examples/kafka-consumer-groups/)
 - [What you get](#what-you-get)
 - [Install](#install)
 - [First-time setup](#first-time-setup)
@@ -62,12 +101,14 @@ From one `log this`:
 Logging the same topic again updates the existing note with a "Revisited"
 section instead of creating a duplicate.
 
-**It remembers your past doubts.** If you ask the same question you asked in
-an earlier chat, even under a different topic, the note shows an "Asked
-before" box with the date, the old note and what clicked for you last time.
-The weak spot's "Times stuck" count goes up, and repeat doubts come first in
-your reviews. When you start a topic you studied before, it offers a quick
-recall check first.
+**It remembers your past doubts.** When you say you are stuck on something
+you were stuck on before, even under a different topic, it tells you right
+away and asks you to recall the answer before explaining again. The note
+shows an "Asked before" box with the date, the old note and what clicked for
+you last time. The weak spot's "Times stuck" count goes up, and repeat doubts
+come first in your reviews. When you start a topic you studied before, it
+offers a quick recall check first. See the
+[example](examples/kafka-consumer-groups/#chat-3-the-same-doubt-under-debezium-caught-mid-chat).
 
 ## Install
 
@@ -283,13 +324,16 @@ learnloop/                 the skill (this is what gets installed)
   scripts/                 transcript parser, struggle scorer, metrics report
   agents/openai.yaml       display info for Codex
 docs/CASE-STUDY.md         why this project exists and how it was designed
+examples/                  real runs with screenshots (not part of the install)
 ```
 
 ## Status
 
-Version 0.1. The full flow has been run end to end on a synthetic chat.
-Struggle scoring, cross-tool activation and style tracking are still being
-checked on real conversations. Role packs are starting points, not verified
+Version 0.1. The full flow has been run end to end in the Claude app with
+Notion: a new topic, the same doubt repeated across three chats, recall
+checks, and the review list (see the [example](examples/kafka-consumer-groups/)).
+The next-day review and delayed teach-back, and the other agents, are still
+being checked on real use. Role packs are starting points, not verified
 job requirements.
 
 Issues and ideas are welcome in
