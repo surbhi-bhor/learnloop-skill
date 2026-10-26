@@ -62,6 +62,13 @@ From one `log this`:
 Logging the same topic again updates the existing note with a "Revisited"
 section instead of creating a duplicate.
 
+**It remembers your past doubts.** If you ask the same question you asked in
+an earlier chat, even under a different topic, the note shows an "Asked
+before" box with the date, the old note and what clicked for you last time.
+The weak spot's "Times stuck" count goes up, and repeat doubts come first in
+your reviews. When you start a topic you studied before, it offers a quick
+recall check first.
+
 ## Install
 
 You need two things: the skill in your AI tool, and Notion connected to that
@@ -197,7 +204,8 @@ parts you have not actually studied yet.
 | Skill Map | Requirements from job descriptions, matched to your learning |
 
 Saved views do the remembering for you: **Due today**, **Open weak spots**,
-**Learned but never applied**, **Flagged**, **What worked** and **Gaps**.
+**Repeat doubts**, **Learned but never applied**, **Flagged**, **What worked**
+and **Gaps**.
 
 ## How struggle detection works
 
@@ -222,6 +230,7 @@ anything is recorded.
 |---|---|
 | Regular topic | 1 day, then 1 week, then 1 month |
 | Weak spot | 1 day, then 3, 7 and 14 days until it passes |
+| Repeat doubt (stuck 2+ times) | Same schedule, but always reviewed first |
 
 A weak spot closes only when you pass a teach-back at least one day later,
 without rereading the note. Getting it right straight after the explanation

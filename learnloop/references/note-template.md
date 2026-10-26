@@ -36,6 +36,14 @@ the user comes back.
 - **Rule to remember:** <one sentence>
 </callout>
 
+<callout icon="🔁" color="yellow_bg">
+**Asked before** (only when "Seen before" found a repeat; one line per repeat)
+
+- **<concept>:** you asked this on <date> in <link to that Learning Log page>.
+  Times stuck: <n>. Last time, what clicked: "<What clicked from that row>".
+  This time, what was different: <one line>.
+</callout>
+
 <callout icon="⚡" color="blue_bg">
 **In 30 seconds:** <the whole idea in 2 or 3 plain sentences>
 

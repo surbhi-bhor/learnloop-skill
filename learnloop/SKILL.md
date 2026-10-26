@@ -81,7 +81,7 @@ found.
    workspace is found by title next time.
 10. Create the saved views defined in `references/notion-schema.md`: Flagged,
    Open weak spots, Due today, Learned but never applied, and What worked.
-   Create Gaps in Skill Map.
+   Create Repeat doubts in Weak Spots and Gaps in Skill Map.
 
 ## Command: teach
 
@@ -212,7 +212,7 @@ Read the Profile page (`profile_page_id`) for the target role and background,
 and `references/role-packs.md` for that role, before writing: the "Apply it
 now" section of the note depends on them. If the Profile is empty, write the
 section for a general learner, and say once in the report that `profile import`
-would make it personal.
+would make it personal. Do not guess a target role or seniority from the chat.
 
 Before creating anything, query the Learning Log for a row with the same or a
 very similar `Topic`. If one exists, the learner is revisiting it: update that
@@ -250,11 +250,38 @@ records now instead of waiting for a `practice` command:
 - One Practice Bank row for the 30-minute drill: `Type` Scenario.
 - One Project Ideas row for the mini-project: `Status` Suggested.
 
+### Seen before
+
+Before writing, check whether this topic or these doubts came up in an earlier
+chat. Learners often re-ask the same question weeks later without noticing,
+and that repetition is the strongest sign of a real gap.
+
+1. Search the Learning Log and Weak Spots for each concept in this chat. Match
+   by meaning, not exact title: "late data" in a Kafka chat and "late-arriving
+   facts" in a lakehouse chat are the same doubt. Use the Notion search tool
+   with two or three key terms per concept, then compare `Question trail`,
+   `Misconception` and `Rule to remember` with today's questions.
+2. Treat a match as a repeat only when today's question asks the same thing
+   or shows the same misconception. Sharing a keyword is not enough. When
+   unsure, do not count it as a repeat.
+3. Show repeats in the step 3 message, one line each: "You asked about
+   **<concept>** before, on <date> in <topic>. Last time, what clicked was:
+   <quote>." This also helps the learner answer "stuck, or just exploring?".
+
+For each confirmed repeat that is stuck again, update the existing Weak Spots
+row instead of creating a new one: add 1 to `Times stuck`, set `Last stuck on`
+today, add today's topic to `Seen in`, append today's questions to `Question
+trail` under the date, set `Status` Open, `Delayed teach-back` Not yet and
+`Next review` tomorrow. In the note, add the "Asked before" callout from the
+template. A repeat that is not stuck this time (the learner answered
+"exploring") is only mentioned in the note, not counted.
+
 For each concept the user confirmed as stuck, also create a Weak Spots row
 related to the Learning Log row: `Question trail`, `Misconception`, `What
 clicked`, `Rule to remember`, `Flagged on` today, `Status` Open,
 `Delayed teach-back` Not yet, `Next review` tomorrow (the first delayed
-teach-back), `Review count` 0.
+teach-back), `Review count` 0, `Times stuck` 1, `Last stuck on` today. Skip
+this for a concept that matched an existing row; that row was updated above.
 
 ### 5. Report
 
@@ -267,6 +294,8 @@ to remember what comes after a note:
 - Otherwise: "Want to try one of the interview questions now?"
 - If the Learning Log "Due today" view has topics due, add one line: "You also
   have <n> reviews due. Say 'review' to do them."
+- If any doubts were repeats, add one line: "<n> of today's doubts were
+  repeats. <concept> is now at <Times stuck> times."
 
 Keep the whole reply under six lines.
 
@@ -282,6 +311,13 @@ is loaded:
 - At the start of a `teach`, `log this` or `practice` command, check the "Due
   today" and "Open weak spots" views once per conversation and mention the
   counts in one line if they are above zero.
+- When the learner starts on a topic (a `teach` request, or the first
+  question on a new topic while the skill is loaded), search the Learning Log
+  and Weak Spots once for it. If they studied it before, say one line before
+  explaining: "You studied <topic> on <date>. Want a 2-minute recall check
+  first?" If it matches an open weak spot, also quote its `Rule to remember`.
+  Answering from memory before rereading is what makes it stick. Do not block
+  the explanation if they say no.
 
 These offers only happen once the skill has loaded. For reminders in every
 chat, tell the learner to add this line to their Claude app preferences
@@ -296,6 +332,11 @@ for the Profile fields, then:
 
 1. Extract only facts that are in the material: roles and years, skills,
    projects, target roles. Do not infer seniority, achievements or numbers.
+   Portfolio sites are often built with JavaScript and show only a title to a
+   plain fetch. If a page returns little, use a browser tool when one is
+   available (try the site's one-page or quick version and its case pages),
+   otherwise ask the learner to paste the text. Numbers may be copied only
+   as the source states them, with the source named.
 2. Show the extracted fields to the learner in one message and ask them to
    confirm or correct, and to name their target role and default teaching
    style if those are missing.

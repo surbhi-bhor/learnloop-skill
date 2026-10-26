@@ -33,7 +33,9 @@ resolve the weak spot. A delayed attempt must still pass.
 - On a weak-spot attempt, update `Last review`, `Review count`, and `Next
   review`; update `Delayed teach-back`, `Status`, and `Resolved on` only after a
   delayed pass.
-- Use the `Due today` and `Open weak spots` views to choose work. Do not expose
+- Use the `Due today` and `Open weak spots` views to choose work. Do weak
+  spots with `Times stuck` 2 or more first: a doubt that keeps coming back is
+  the biggest gap. Do not expose
   the answer until the learner has attempted recall.
 - A missed review is still due; keep it visible until completed or until the
   learner changes its date.

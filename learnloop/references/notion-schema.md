@@ -69,12 +69,18 @@ CREATE TABLE (
   "Last review" DATE,
   "Review count" NUMBER,
   "Flagged on" DATE,
-  "Resolved on" DATE
+  "Resolved on" DATE,
+  "Times stuck" NUMBER COMMENT 'How many separate chats I got stuck on this; 1 on first flag',
+  "Last stuck on" DATE,
+  "Seen in" RELATION('<learning_log_ds>') COMMENT 'Other topics where the same doubt came up'
 )
 ```
 
 `Status` moves to Resolved only after a delayed teach-back passes. Every new
-row starts as Open with `Delayed teach-back` = Not yet.
+row starts as Open with `Delayed teach-back` = Not yet, `Times stuck` 1 and
+`Last stuck on` today. When the same doubt comes back in a later chat, the
+existing row is updated instead of a new one being created (see "Seen before"
+in `SKILL.md`).
 
 ## Reality Cards
 
@@ -183,6 +189,8 @@ private job description.
   `Date learned` ascending.
 - Learning Log, "What worked": `Teach-back result` is Passed, grouped by
   `Style used`.
+- Weak Spots, "Repeat doubts": `Times stuck` >= 2, sorted by `Times stuck`
+  descending.
 - Skill Map, "Gaps": `Required in target JD` is true and `Level` is empty.
 
 ## Finding the workspace

@@ -161,6 +161,44 @@ rules and labels the result; without Notion it gives the full note in the
 chat; with no config file it finds the workspace in Notion by name, or offers
 to create one.
 
+### 9. Remember past doubts, not just past topics
+
+Matching notes by topic name was not enough. The same doubt often comes back
+weeks later under a different topic: "late data" in a Kafka chat, then
+"late-arriving facts" in a lakehouse chat. So before writing a note, the
+skill searches past weak spots by meaning and compares the actual questions
+and misconceptions. A confirmed repeat updates the existing weak spot (a
+"Times stuck" count, the date, and links to every topic it appeared in)
+instead of creating a new one, and the note opens with an "Asked before" box
+quoting what clicked last time. Repeat doubts get their own view and are
+reviewed first. When I start a topic I studied before, the skill offers a
+two-minute recall check before explaining again.
+
+*Why:* re-asking the same question without noticing is the clearest sign of
+a real gap, and the one I am least likely to catch myself.
+
+*Trade-off:* matching by meaning can produce false matches. The rule is that
+sharing a keyword is not enough; it must be the same question or the same
+misconception, and when unsure it does not count.
+
+## Iterations after first use
+
+Using the skill on real learning sessions changed it. Each change below came
+from something that went wrong or felt missing.
+
+| What I noticed | What changed |
+|---|---|
+| Notes were text only, harder to scan for visual learners | Every note now has a "Picture it" visual chosen by the shape of the idea: flowchart, sequence diagram, comparison table or before/after table |
+| Choosing Quiz or Flashcards replaced the detailed note | The detailed note is always written; formats are added after it |
+| The skill needed a config file with my Notion IDs, so nobody else could install it as-is | It now finds the workspace by name or offers to create one, and installs in any agent with `npx skills add` |
+| Some agents cannot run Python | Struggle is scored by hand with the same rules and labelled "Scored by hand, not by script" |
+| ChatGPT and Gemini web cannot load skills | The paste-in prompt was brought up to the same rules: signal table, stuck box, visuals, production section |
+| In the Claude app, the Notion tools sometimes did not load | The skill now names the exact tools to search for, and gives the note to paste when they still fail |
+| "Minutes to log" showed 12 seconds for a note drafted in an earlier attempt | The field is left empty when a note is only being saved, not measured end to end |
+| Notes said where a topic shows up in a job but not how it runs or breaks | "Apply it now" gained an "In production" part: real usage, a typical failure, and how to catch it |
+| Without a profile, notes guessed my target role | Profile import now reads the resume and portfolio, and mini-projects build on my own project |
+| I could re-ask an old doubt without anyone noticing | "Seen before" detection, described in decision 9 |
+
 ## How it works
 
 ```mermaid
@@ -216,6 +254,7 @@ Nothing below is claimed yet; these are the targets for the validation phase.
 | Does it save time? | Minutes to log vs my timed manual baseline | Lower than manual |
 | Does it lead to practice? | Topics with at least one practice attempt | Tracked over weeks |
 | Do weak spots get fixed? | Weak spots closed by a delayed teach-back | Tracked over weeks |
+| Do repeat doubts stop repeating? | Weak spots that reach Times stuck 3 | Falling over time |
 
 The baseline is manual timings plus three annotated chats where I got stuck
 and one where I did not.
