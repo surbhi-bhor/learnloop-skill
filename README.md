@@ -118,8 +118,8 @@ tool. No file needs editing.
 | Tool | Tested | Install the skill | Connect Notion |
 |---|---|---|---|
 | Claude app (web, desktop) | **Yes**, end to end ([example](examples/kafka-consumer-groups/)) | Download `learnloop-public.zip` from [Releases](https://github.com/surbhi-bhor/learnloop-skill/releases). In Settings, Capabilities, turn on code execution, then upload the zip under Skills | Settings, Connectors, Notion |
-| Claude Code | Not yet | `npx skills add surbhi-bhor/learnloop-skill -a claude-code -g` | `claude mcp add --transport http notion https://mcp.notion.com/mcp` |
-| Codex | Not yet with the current version | `npx skills add surbhi-bhor/learnloop-skill -a codex -g` | Add the Notion MCP server in Codex settings |
+| Claude Code | Yes (2026-10-27): teach, mid-chat recall check and `log this` to Notion | `npx skills add surbhi-bhor/learnloop-skill -a claude-code -g` | `claude mcp add --transport http notion https://mcp.notion.com/mcp` |
+| Codex | Mostly (2026-10-27): teach, mid-chat recall check and Notion reads work; the Notion write after `log this` is not tested yet | `npx skills add surbhi-bhor/learnloop-skill -a codex -g` | Add the Notion MCP server in Codex settings |
 | Gemini CLI, Cursor, others | Not yet | `npx skills add surbhi-bhor/learnloop-skill`, then pick your tool | Add the Notion MCP server (`https://mcp.notion.com/mcp`) |
 | ChatGPT or Gemini web | Not yet | No install. Paste the prompt in [`paste-in-prompt.md`](learnloop/references/paste-in-prompt.md) at the end of a learning chat | Use the app's Notion connector if it has one; otherwise you get the note in the chat |
 

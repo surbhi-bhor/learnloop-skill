@@ -230,6 +230,7 @@ from something that went wrong or felt missing.
 | On the first real repeat, the skill spotted it but explained first and quoted the old rule, leaving the recall check for afterwards | It now asks first, waits, tests recall before explaining, and shows the old rule only after I try |
 | In a full end-to-end run, "teach me kafka consumer groups" was answered without loading the skill, so the recall check never ran, and a repeat doubt asked mid-chat was only noticed at `log this` | The skill now loads on any teach request or "I'm stuck", and checks Weak Spots for a repeat at the moment of confusion, not only when logging. A one-line reminder was not enough; it took an explicit step in the teach command (read Weak Spots, ask one recall question, wait) before the re-test passed |
 | The skill asked whether my own Profile page might belong to someone else | The Profile in the learner's own workspace is treated as theirs |
+| Claude Code and Codex did not load the skill on a plain "teach me X" (tested 2026-10-27). Codex also cited a wrong date for an old doubt, and Claude Code could not run the scorer when file writes were blocked | Rewrote the description to say what the skill is first (a coach that remembers past doubts) and to load it before answering any teach or stuck message; both tools then loaded it on plain "teach me X" and asked the recall question mid-chat. The recall line takes the date from the row's Flagged on field. The scorer reads JSON from stdin when files cannot be written |
 
 ## Evidence from a real run
 

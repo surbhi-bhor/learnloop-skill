@@ -16,6 +16,9 @@ Commands:
                      "misconceptions": [{"turn": 7, "said": "...", "correction": "..."}],
                      "hints_needed": 0}]}
 
+  Use "-" to read from stdin when files cannot be written: "markers -" reads
+  the transcript, and "score -" reads {"transcript": ..., "concepts": ...}.
+
 Output is JSON on stdout. See references/struggle-rubric.md for what each
 signal means and how the score is used.
 """
@@ -55,6 +58,10 @@ HINT_THRESHOLD = 2    # needing this many hints on a check question counts
 
 
 def load_json(path):
+    if path == "-":
+        if hasattr(sys.stdin, "reconfigure"):
+            sys.stdin.reconfigure(encoding="utf-8")
+        return json.load(sys.stdin)
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
@@ -144,10 +151,14 @@ def main(argv=None):
         output = markers(load_json(argv[1]))
     elif len(argv) == 3 and argv[0] == "score":
         output = score(load_json(argv[1]), load_json(argv[2]))
+    elif len(argv) == 2 and argv[0] == "score" and argv[1] == "-":
+        combined = load_json("-")
+        output = score(combined["transcript"], combined["concepts"])
     else:
         print(__doc__, file=sys.stderr)
         return 2
-    sys.stdout.reconfigure(encoding="utf-8")
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     print(json.dumps(output, indent=2, ensure_ascii=False))
     return 0
 

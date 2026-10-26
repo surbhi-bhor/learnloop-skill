@@ -1,6 +1,6 @@
 ---
 name: learnloop
-description: Turns what the user learned in the current chat (or an exported chat file) into a full study note in their Notion Learning Log, records where they got stuck, and runs their learning loop - styled teaching, real-job reality cards, practice and teach-backs, spaced review, and job-description gap checks. Use whenever the user wants learning saved, noted or logged ("log this", "save this to notion", "note this down", "make flashcards from this"), asks what they struggled with, asks to be taught a topic ("teach me X", "explain X step by step", or in a style like "teach me X like Bollywood"), says they are stuck on a concept, asks how a topic is used on the job, asks for practice, a drill or a teach-back, asks what is due for review, pastes a job description to compare, or shares a resume to set up their profile. Load it before answering a teach request, since it checks whether the topic or doubt was studied before, and before any Notion tool call for these requests. A quick factual lookup does not need it.
+description: Learning coach that remembers the user's past doubts in their Notion LearnLoop workspace. Use it first, before answering, whenever the user asks to be taught or explained a topic ("teach me X", "explain X step by step", "teach me X like Bollywood"), says they are stuck or still don't get something, or asks to save what they learned or discussed, anywhere in Notion ("log this", "save this to notion", "note this down", "make flashcards from this"). It checks whether the topic or doubt was studied before and asks a recall question if so; answering without it skips that check. Also use it when the user asks what they struggled with, how a topic is used on the job, for practice, a drill or a teach-back, what is due for review, pastes a job description to compare, or shares a resume to set up their profile. It writes a study note with stuck boxes, a diagram, practice and spaced review to Notion. Load it before any Notion tool call for these requests. Skip it only for a quick factual lookup.
 ---
 
 # LearnLoop
@@ -114,7 +114,8 @@ before, do this before writing any explanation:
    does not matter; the same question does.
 2. If one matches, reply with only: "You were stuck on this on <date>, under
    <topic>. Before I explain: <one recall question on it>?" Then stop and
-   wait. Do not explain or quote `Rule to remember` in that message.
+   wait. Do not explain or quote `Rule to remember` in that message. Take
+   <date> from the row's `Flagged on` field; never guess it.
 3. After they answer, say what was right, explain only the gap, then show the
    `Rule to remember`. Remember the match, so `log this` updates that row.
 4. If nothing matches, answer normally.
@@ -202,6 +203,10 @@ first lines of the file and ask the user which lines start each speaker.
 3. Group the user's turns into concepts and record misconceptions, following the
    rubric. Write `concepts.json` next to the transcript.
 4. Run `python scripts/struggle_score.py score <transcript.json> <concepts.json>`.
+
+If you cannot write files, pipe the JSON on stdin instead:
+`markers -` reads the transcript, and `score -` reads
+`{"transcript": {"turns": [...]}, "concepts": {"concepts": [...]}}`.
 
 Use the script's numbers as they are. Do not adjust a score by hand; if it looks
 wrong, the grouping is wrong, so fix `concepts.json` and rerun.
