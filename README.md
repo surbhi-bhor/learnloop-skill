@@ -115,13 +115,18 @@ offers a quick recall check first. See the
 You need two things: the skill in your AI tool, and Notion connected to that
 tool. No file needs editing.
 
-| Tool | Install the skill | Connect Notion |
-|---|---|---|
-| Claude app (web, desktop) | Download `learnloop-public.zip` from [Releases](https://github.com/surbhi-bhor/learnloop-skill/releases). In Settings, Capabilities, turn on code execution, then upload the zip under Skills | Settings, Connectors, Notion |
-| Claude Code | `npx skills add surbhi-bhor/learnloop-skill -a claude-code -g` | `claude mcp add --transport http notion https://mcp.notion.com/mcp` |
-| Codex | `npx skills add surbhi-bhor/learnloop-skill -a codex -g` | Add the Notion MCP server in Codex settings |
-| Gemini CLI, Cursor, others | `npx skills add surbhi-bhor/learnloop-skill`, then pick your tool | Add the Notion MCP server (`https://mcp.notion.com/mcp`) |
-| ChatGPT or Gemini web | No install. Paste the prompt in [`paste-in-prompt.md`](learnloop/references/paste-in-prompt.md) at the end of a learning chat | Use the app's Notion connector if it has one; otherwise you get the note in the chat |
+| Tool | Tested | Install the skill | Connect Notion |
+|---|---|---|---|
+| Claude app (web, desktop) | **Yes**, end to end ([example](examples/kafka-consumer-groups/)) | Download `learnloop-public.zip` from [Releases](https://github.com/surbhi-bhor/learnloop-skill/releases). In Settings, Capabilities, turn on code execution, then upload the zip under Skills | Settings, Connectors, Notion |
+| Claude Code | Not yet | `npx skills add surbhi-bhor/learnloop-skill -a claude-code -g` | `claude mcp add --transport http notion https://mcp.notion.com/mcp` |
+| Codex | Not yet with the current version | `npx skills add surbhi-bhor/learnloop-skill -a codex -g` | Add the Notion MCP server in Codex settings |
+| Gemini CLI, Cursor, others | Not yet | `npx skills add surbhi-bhor/learnloop-skill`, then pick your tool | Add the Notion MCP server (`https://mcp.notion.com/mcp`) |
+| ChatGPT or Gemini web | Not yet | No install. Paste the prompt in [`paste-in-prompt.md`](learnloop/references/paste-in-prompt.md) at the end of a learning chat | Use the app's Notion connector if it has one; otherwise you get the note in the chat |
+
+"Not yet" means the skill follows the open Agent Skills format these tools
+support, but nobody has run the full loop in them. If you try one, please
+open an [issue](https://github.com/surbhi-bhor/learnloop-skill/issues) saying
+what worked and what didn't.
 
 Manual install: copy the `learnloop/` folder into your tool's skills folder
 (for Claude Code, `~/.claude/skills/learnloop/`).
@@ -332,8 +337,9 @@ examples/                  real runs with screenshots (not part of the install)
 Version 0.1. The full flow has been run end to end in the Claude app with
 Notion: a new topic, the same doubt repeated across three chats, recall
 checks, and the review list (see the [example](examples/kafka-consumer-groups/)).
-The next-day review and delayed teach-back, and the other agents, are still
-being checked on real use. Role packs are starting points, not verified
+The next-day review and delayed teach-back are still being checked on real
+use. Other agents are not tested yet; see the Tested column under
+[Install](#install). Role packs are starting points, not verified
 job requirements.
 
 Issues and ideas are welcome in

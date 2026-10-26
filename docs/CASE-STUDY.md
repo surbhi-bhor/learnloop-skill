@@ -182,6 +182,8 @@ would make the whole record untrustworthy.
 The skill follows the open Agent Skills format, so the same folder installs in
 Claude, Claude Code, Codex, Gemini CLI and Cursor with `npx skills add`. For
 chat apps that cannot load skills, a paste-in prompt carries the same rules.
+So far only the Claude app has been tested end to end; the others are
+expected to work because they support the format, but are not yet verified.
 
 It also fails gracefully: without Python it scores by hand with the same
 rules and labels the result; without Notion it gives the full note in the
