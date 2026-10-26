@@ -148,7 +148,9 @@ command starts, and read the clock again just before writing to Notion.
 `Minutes to log` is the difference, rounded to one decimal. Never estimate it:
 it is the main time-saved metric, and a guessed number makes it worthless.
 If no shell or clock is available, leave `Minutes to log` empty rather than
-estimating.
+estimating. Also leave it empty when the note was drafted in an earlier chat
+or attempt and is only being saved now, because the clock would measure the
+save and not the whole job.
 
 ### 1. Get the transcript
 
