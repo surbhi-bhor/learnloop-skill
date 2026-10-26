@@ -326,7 +326,7 @@ Some chat apps do not; the note includes a plain text version for those.
 learnloop/                 the skill (this is what gets installed)
   SKILL.md                 commands and workflow
   references/              note template, Notion schema, rubrics, role packs
-  scripts/                 transcript parser, struggle scorer, metrics report
+  scripts/                 transcript parser and struggle scorer
   agents/openai.yaml       display info for Codex
 docs/CASE-STUDY.md         why this project exists and how it was designed
 examples/                  real runs with screenshots (not part of the install)
