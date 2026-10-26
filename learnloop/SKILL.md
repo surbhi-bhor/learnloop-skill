@@ -103,6 +103,25 @@ learner's chosen explanation format. Track styles for the metrics: when the topi
 `Style used` is the first style used on it and `Styles tried` is how many
 styles were used in total (1 if the first one worked).
 
+**Repeat check on every stuck message.** For the rest of the chat, each time
+the learner says they are stuck or lost ("I'm stuck", "I still don't get
+it", "confused"), or asks a question that sounds like a doubt they had
+before, do this before writing any explanation:
+
+1. Read the Weak Spots rows (one query on that data source; it is small) and
+   compare this doubt with each row's `Weak spot`, `Question trail` and
+   `Misconception` by meaning, as in "Seen before". A different topic name
+   does not matter; the same question does.
+2. If one matches, reply with only: "You were stuck on this on <date>, under
+   <topic>. Before I explain: <one recall question on it>?" Then stop and
+   wait. Do not explain or quote `Rule to remember` in that message.
+3. After they answer, say what was right, explain only the gap, then show the
+   `Rule to remember`. Remember the match, so `log this` updates that row.
+4. If nothing matches, answer normally.
+
+This matters most mid-chat, at the moment of confusion; waiting for `log
+this` to notice the repeat wastes the best moment for recall.
+
 ## Command: reality
 
 When the user asks how a topic is used at work, read

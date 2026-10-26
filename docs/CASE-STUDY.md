@@ -199,7 +199,7 @@ from something that went wrong or felt missing.
 | Without a profile, notes guessed my target role | Profile import now reads the resume and portfolio, and mini-projects build on my own project |
 | I could re-ask an old doubt without anyone noticing | "Seen before" detection, described in decision 9 |
 | On the first real repeat, the skill spotted it but explained first and quoted the old rule, leaving the recall check for afterwards | It now asks first, waits, tests recall before explaining, and shows the old rule only after I try |
-| In a full end-to-end run, "teach me kafka consumer groups" was answered without loading the skill, so the recall check never ran, and a repeat doubt asked mid-chat was only noticed at `log this` | The skill now loads on any teach request or "I'm stuck", and checks Weak Spots for a repeat at the moment of confusion, not only when logging |
+| In a full end-to-end run, "teach me kafka consumer groups" was answered without loading the skill, so the recall check never ran, and a repeat doubt asked mid-chat was only noticed at `log this` | The skill now loads on any teach request or "I'm stuck", and checks Weak Spots for a repeat at the moment of confusion, not only when logging. A one-line reminder was not enough; it took an explicit step in the teach command (read Weak Spots, ask one recall question, wait) before the re-test passed |
 | The skill asked whether my own Profile page might belong to someone else | The Profile in the learner's own workspace is treated as theirs |
 
 ## How it works
