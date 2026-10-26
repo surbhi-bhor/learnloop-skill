@@ -315,9 +315,12 @@ is loaded:
   question on a new topic while the skill is loaded), search the Learning Log
   and Weak Spots once for it. If they studied it before, say one line before
   explaining: "You studied <topic> on <date>. Want a 2-minute recall check
-  first?" If it matches an open weak spot, also quote its `Rule to remember`.
-  Answering from memory before rereading is what makes it stick. Do not block
-  the explanation if they say no.
+  first?" Then stop and wait for the answer; do not explain in the same
+  message, because seeing the answer first defeats the recall. If they say
+  yes, ask one or two questions from that note's "Check yourself" or the
+  Practice Bank, give feedback, then explain only what they missed. If they
+  say no, explain normally. If it matches an open weak spot, do not quote its
+  `Rule to remember` before they try, for the same reason; show it after.
 
 These offers only happen once the skill has loaded. For reminders in every
 chat, tell the learner to add this line to their Claude app preferences

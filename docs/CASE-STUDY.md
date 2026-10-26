@@ -198,6 +198,7 @@ from something that went wrong or felt missing.
 | Notes said where a topic shows up in a job but not how it runs or breaks | "Apply it now" gained an "In production" part: real usage, a typical failure, and how to catch it |
 | Without a profile, notes guessed my target role | Profile import now reads the resume and portfolio, and mini-projects build on my own project |
 | I could re-ask an old doubt without anyone noticing | "Seen before" detection, described in decision 9 |
+| On the first real repeat, the skill spotted it but explained first and quoted the old rule, leaving the recall check for afterwards | It now asks first, waits, tests recall before explaining, and shows the old rule only after I try |
 
 ## How it works
 
