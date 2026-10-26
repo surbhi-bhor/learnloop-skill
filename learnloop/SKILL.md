@@ -1,6 +1,6 @@
 ---
 name: learnloop
-description: Turns what the user learned in the current chat (or an exported chat file) into a full study note in their Notion Learning Log, records where they got stuck, and runs their learning loop - styled teaching, real-job reality cards, practice and teach-backs, spaced review, and job-description gap checks. Use whenever the user wants learning saved, noted or logged ("log this", "log this in notion", "save this to notion", "add this to my notes", "note this down", "make flashcards or a quiz from this"), asks what they struggled with, asks to be taught in a named style ("teach me X like Bollywood", "explain using my past experience"), asks how a topic is used on the job, asks for practice, a drill or a teach-back, asks what is due for review, pastes a job description to compare, or shares a resume to set up their profile. Load it before any Notion tool call for these requests; it holds the note format and how to find the Notion workspace. A plain "what is X" question does not need it.
+description: Turns what the user learned in the current chat (or an exported chat file) into a full study note in their Notion Learning Log, records where they got stuck, and runs their learning loop - styled teaching, real-job reality cards, practice and teach-backs, spaced review, and job-description gap checks. Use whenever the user wants learning saved, noted or logged ("log this", "save this to notion", "note this down", "make flashcards from this"), asks what they struggled with, asks to be taught a topic ("teach me X", "explain X step by step", or in a style like "teach me X like Bollywood"), says they are stuck on a concept, asks how a topic is used on the job, asks for practice, a drill or a teach-back, asks what is due for review, pastes a job description to compare, or shares a resume to set up their profile. Load it before answering a teach request, since it checks whether the topic or doubt was studied before, and before any Notion tool call for these requests. A quick factual lookup does not need it.
 ---
 
 # LearnLoop
@@ -47,7 +47,9 @@ The skill needs these Notion tools: search, fetch, create pages, update page,
 query data sources, create database and create view (in the official Notion
 connector they are named `notion-search`, `notion-fetch`,
 `notion-create-pages`, `notion-update-page`, `notion-query-data-sources`,
-`notion-create-database`, `notion-create-view`). Some apps load connector
+`notion-create-database`, `notion-create-view`). Query one data source per
+call; querying several at once needs a paid Notion plan and fails on free
+ones. Some apps load connector
 tools only on request. If only listing or calendar tools are visible, search
 for the missing ones by those exact names (for example a tool search for
 "notion-fetch notion-create-pages notion-update-page") before deciding they
@@ -321,6 +323,14 @@ is loaded:
   Practice Bank, give feedback, then explain only what they missed. If they
   say no, explain normally. If it matches an open weak spot, do not quote its
   `Rule to remember` before they try, for the same reason; show it after.
+- Mid-chat, when the learner says they are stuck or asks the same thing again
+  under a different topic, search Weak Spots once for that doubt (match by
+  meaning, as in "Seen before"). If it matches, say so in one line ("You were
+  stuck on this on <date>, under <topic>"), ask them to recall the rule first
+  and wait, then explain only the gap. Do not wait for `log this` to notice a
+  repeat, because the recall is worth most at the moment of confusion.
+- Treat the Profile page in the learner's own LearnLoop workspace as theirs.
+  Do not ask whether it belongs to someone else.
 
 These offers only happen once the skill has loaded. For reminders in every
 chat, tell the learner to add this line to their Claude app preferences
