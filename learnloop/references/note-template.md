@@ -78,8 +78,26 @@ Answers
 
 <callout icon="🎯" color="green_bg">
 **Where this shows up in <target role>:** <2 or 3 concrete tasks on the job,
-from the Profile and role pack. Mark "Beyond the chat" if not discussed.>
+from the Profile and role pack, tied to the learner's past roles where the
+Profile supports it. Put <span color="gray">Beyond the chat</span> in front of
+each task the chat did not discuss; this is required, not optional.>
 </callout>
+
+**In production**
+
+- **How teams actually use it:** <the common real-world setup, and how often
+  it is used compared with simpler alternatives. Say when a simpler option is
+  usually enough, for example at the learner's project scale.>
+- **What breaks:** <one realistic failure, told as a short incident:
+  symptom, cause, how it was found, the fix. Label it "Typical scenario", not
+  a real case, unless the chat or a source describes a real one.>
+- **How you would notice:** <the check, alert, test or metric that catches
+  the failure early, such as a row-count reconciliation or freshness alert.>
+
+Mark every line here "Beyond the chat" unless the chat covered it. Claims
+about how common a practice is need a cited source when browsing is
+available; otherwise add "(unverified)" after the claim. For more depth,
+offer a `reality` card.
 
 **Interview questions** (also saved to the Practice Bank)
 

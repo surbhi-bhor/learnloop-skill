@@ -43,7 +43,10 @@ LearnLoop skill automatically:
 > give me the finished note here and clearly say it was not saved to Notion.
 >
 > My target role is: [fill in, for example senior data engineer]. End the note
-> with an "Apply it now" section: where this topic shows up in that role, 3
+> with an "Apply it now" section: where this topic shows up in that role; an
+> "In production" part with how teams actually use it (and when a simpler
+> option is enough), one realistic failure (symptom, cause, fix, labeled as a
+> typical scenario) and how you would notice it; 3
 > interview questions for that role with difficulty and why they are asked
 > (well-known patterns only), a 30-minute drill for today, one mini-project,
 > and one teach-back prompt. Then offer me one next step, such as trying the

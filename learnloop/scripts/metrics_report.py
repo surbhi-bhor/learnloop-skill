@@ -163,7 +163,8 @@ def main(argv=None):
     parser.add_argument("--out", help="write report JSON to this path")
     args = parser.parse_args(argv)
     try:
-        bundle = json.loads(Path(args.bundle).read_text(encoding="utf-8"))
+        # Windows PowerShell's UTF-8 writer may include a BOM.
+        bundle = json.loads(Path(args.bundle).read_text(encoding="utf-8-sig"))
         report = build_report(bundle)
     except (OSError, json.JSONDecodeError, ValueError, KeyError) as exc:
         print(f"error: {exc}", file=sys.stderr)

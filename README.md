@@ -50,8 +50,9 @@ From one `log this`:
 - **A "Where I got stuck" box** for concepts you confirm you were stuck on,
   with your own question trail, your misconception and what finally clicked.
 - **An "Apply it now" section** for your target role: where the topic shows up
-  on the job, interview questions with difficulty, a 30-minute drill, a
-  mini-project and a teach-back prompt.
+  on the job, how it is used in production and what typically breaks,
+  interview questions with difficulty, a 30-minute drill, a mini-project and a
+  teach-back prompt.
 - **Records created for you**: the questions go to a Practice Bank, the project
   to Project Ideas, stuck concepts to Weak Spots, and the first review is set
   for tomorrow.
@@ -173,8 +174,9 @@ Every note has the same shape, so you always know where to look:
 7. **Gotchas**
 8. **Check yourself**, answers hidden in a toggle
 9. **Your extra format**, if you chose one
-10. **Apply it now**: where it shows up on the job, interview questions, a
-    30-minute drill, a mini-project, a teach-back prompt
+10. **Apply it now**: where it shows up on the job, in production (real use,
+    a typical failure, how to catch it), interview questions, a 30-minute
+    drill, a mini-project, a teach-back prompt
 11. **Cheat sheet**
 
 Anything the chat did not cover is marked "Beyond the chat", so you know which
