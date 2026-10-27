@@ -3,7 +3,7 @@
 Turn what you learn in AI chats into Notion study notes, weak spots, practice
 and job-ready proof.
 
-You learn a topic in Claude, ChatGPT or Gemini. You say **"log this in
+You learn a topic by chatting with an AI assistant. You say **"log this in
 notion"**. LearnLoop writes a full study note with a diagram, records where you
 got stuck, adds interview questions and a drill for your target role, and
 schedules your first review for tomorrow. Then it tells you the next step, so
@@ -112,24 +112,25 @@ offers a quick recall check first. See the
 
 ## Install
 
-You need two things: the skill in your AI tool, and Notion connected to that
-tool. No file needs editing.
+LearnLoop is an [Agent Skill](https://agentskills.io): a folder with a
+`SKILL.md` and its references. Install it the way your AI tool installs
+skills, and connect Notion to that tool. No file needs editing.
 
-| Tool | Tested | Install the skill | Connect Notion |
-|---|---|---|---|
-| Claude app (web, desktop) | **Yes**, end to end ([example](examples/kafka-consumer-groups/)) | Download `learnloop-public.zip` from [Releases](https://github.com/surbhi-bhor/learnloop-skill/releases). In Settings, Capabilities, turn on code execution, then upload the zip under Skills | Settings, Connectors, Notion |
-| Claude Code | Yes (2026-10-27): teach, mid-chat recall check and `log this` to Notion | `npx skills add surbhi-bhor/learnloop-skill -a claude-code -g` | `claude mcp add --transport http notion https://mcp.notion.com/mcp` |
-| Codex | Mostly (2026-10-27): teach, mid-chat recall check and Notion reads work; the Notion write after `log this` is not tested yet | `npx skills add surbhi-bhor/learnloop-skill -a codex -g` | Add the Notion MCP server in Codex settings |
-| Gemini CLI, Cursor, others | Not yet | `npx skills add surbhi-bhor/learnloop-skill`, then pick your tool | Add the Notion MCP server (`https://mcp.notion.com/mcp`) |
-| ChatGPT or Gemini web | Not yet | No install. Paste the prompt in [`paste-in-prompt.md`](learnloop/references/paste-in-prompt.md) at the end of a learning chat | Use the app's Notion connector if it has one; otherwise you get the note in the chat |
+- **From GitHub:** `npx skills add surbhi-bhor/learnloop-skill`, then pick
+  your tool.
+- **As a zip:** download `learnloop-public.zip` from
+  [Releases](https://github.com/surbhi-bhor/learnloop-skill/releases) and
+  upload it where your app accepts skills.
+- **By hand:** copy the `learnloop/` folder into your tool's skills folder.
 
-"Not yet" means the skill follows the open Agent Skills format these tools
-support, but nobody has run the full loop in them. If you try one, please
-open an [issue](https://github.com/surbhi-bhor/learnloop-skill/issues) saying
-what worked and what didn't.
+For Notion, add the Notion connector or MCP server
+(`https://mcp.notion.com/mcp`) in the same tool.
 
-Manual install: copy the `learnloop/` folder into your tool's skills folder
-(for Claude Code, `~/.claude/skills/learnloop/`).
+I built and use it with Claude, which is where it was tested end to end (see
+the [example](examples/kafka-consumer-groups/)). It follows the open format,
+so other tools that support skills and Notion should be able to run it. If an
+app cannot load skills, paste [`paste-in-prompt.md`](learnloop/references/paste-in-prompt.md)
+at the end of a learning chat to get the note without the Notion memory.
 
 Python 3.11 or newer makes struggle scoring exact. Without Python the skill
 still works and scores by hand.
@@ -338,8 +339,8 @@ Version 0.1. The full flow has been run end to end in the Claude app with
 Notion: a new topic, the same doubt repeated across three chats, recall
 checks, and the review list (see the [example](examples/kafka-consumer-groups/)).
 The next-day review and delayed teach-back are still being checked on real
-use. Other agents are not tested yet; see the Tested column under
-[Install](#install). Role packs are starting points, not verified
+use. It is built and tested with Claude; other tools that support Agent
+Skills should work but have not been verified. Role packs are starting points, not verified
 job requirements.
 
 Issues and ideas are welcome in
