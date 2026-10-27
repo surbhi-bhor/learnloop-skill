@@ -230,13 +230,18 @@ line at the end of the note so later metrics can tell the two apart.
 
 ### 3. Confirm with the user
 
-In one message, list each flagged concept with its evidence and ask "stuck, or
-just exploring?" (wording in the rubric). In the same message say the detailed
+In one message, show a table of the concepts (Concept | Score | Evidence),
+list under it any wrong belief the learner stated, quoted, as the misconception
+you will record, and ask "stuck, or just exploring?" for each flagged concept
+(wording in the rubric). In the same message say the detailed
 note with diagrams is always written, and ask whether they also want a
 Comparison table, Quiz or Flashcards added (default: none).
 
 If nothing is flagged, say so in one line, name the concepts found, and ask
 only about the format.
+
+Either way, stop and wait for the reply. Write nothing to Notion until the
+learner answers this message.
 
 ### 4. Write to Notion
 
@@ -327,7 +332,8 @@ this for a concept that matched an existing row; that row was updated above.
 
 Before reporting, fetch the page and each weak spot row you touched and check:
 the stuck callout is first when the verdict is Stuck, the diagram rendered,
-flashcard answers sit inside their toggles, and each repeat row really shows
+flashcard answers sit inside their toggles, a wrong belief the learner stated
+is in `Misconception` on the callout and the weak spot row, and each repeat row really shows
 the new `Times stuck`, today's `Last stuck on`, this page in `Seen in` and
 today's questions in `Question trail`. Fix anything missing. If a write
 failed and cannot be fixed, say so in the report, and never state a `Times
@@ -365,8 +371,10 @@ is loaded:
   question on a new topic while the skill is loaded), search the Learning Log
   and Weak Spots once for it. Count it as studied before only when a row's
   `Topic` covers the same subject, not just the same `Area` (an old Spark
-  Streaming note does not mean Spark broadcast joins were studied). If they
-  studied it before, say one line before
+  Streaming note does not mean Spark broadcast joins were studied). Only
+  Learning Log and Weak Spots rows count; ignore other pages in the workspace,
+  such as old personal notes found by search. If they studied it before, say
+  one line before
   explaining: "You studied <topic> on <date>. Want a 2-minute recall check
   first?" Then stop and wait for the answer; do not explain in the same
   message, because seeing the answer first defeats the recall. If they say
