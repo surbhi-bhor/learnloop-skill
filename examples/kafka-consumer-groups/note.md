@@ -32,7 +32,7 @@ not cover.
 
 > ⚡ **In 30 seconds:** A topic is an append-only log split into partitions, and every message has an offset (its position inside one partition). A consumer group is a team of readers that splits the partitions between them, so each message goes to one reader in the team; the team keeps one bookmark (committed offset) per partition, stored inside Kafka. A different group has its own bookmarks and reads everything again from the same single stored copy. Old messages are deleted by retention (7 days by default), never because they were read.
 >
-> **Why it matters for Senior Data Engineer and Senior BI roles:** partition count caps how fast a pipeline can read, and the commit strategy decides whether a crash leaves duplicates or lost data in the warehouse.
+> **Why it matters for data engineering roles:** partition count caps how fast a pipeline can read, and the commit strategy decides whether a crash leaves duplicates or lost data in the warehouse.
 
 ## Key idea
 
@@ -161,7 +161,7 @@ The restarted consumer gets nothing because its bookmark survived. Group g2 has 
 
 ## Apply it now
 
-> 🎯 **Where this shows up for Senior Data Engineer and Senior BI roles:**
+> 🎯 **Where this shows up for data engineering roles:**
 >
 > - *Beyond the chat:* Sizing partitions and consumers for a streaming ingestion into a lake or warehouse, since partition count caps read parallelism.
 > - *Beyond the chat:* Running several independent consumers on one topic (raw loader, quality checks, feature job), each as its own group.
@@ -176,7 +176,7 @@ The restarted consumer gets nothing because its bookmark survived. Group g2 has 
 
 **Interview questions** (also saved to the Practice Bank)
 
-| # | Question | Difficulty | Why a senior data role asks it |
+| # | Question | Difficulty | Why interviewers ask it |
 |---|---|---|---|
 | 1 | Two services both need every message from one topic. How do consumer groups and offsets make that work? | Foundational | Tests whether you know groups are independent bookmarks over one stored copy |
 | 2 | A warehouse-loader consumer crashes mid-batch. What is re-read, and how do you keep the warehouse correct? | Intermediate | Tests at-least-once thinking and idempotent loads |

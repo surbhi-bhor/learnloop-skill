@@ -8,14 +8,14 @@ into a learning loop that remembers the next step for me.
 I learn most new topics by talking to AI tools: Claude, ChatGPT, Gemini. The
 explanations were good, but very little of it lasted. LearnLoop is an agent
 skill that turns one learning chat into a full study note, a record of where I
-got stuck, practice tied to the jobs I am targeting, and a review schedule, all
+got stuck, practice for interviews and real work, and a review schedule, all
 from a single command: "log this in notion".
 
 | | |
 |---|---|
 | **Role** | Designer and builder |
-| **Target user** | Anyone learning technical topics through AI chats, starting with me (aiming at senior BI and data engineering roles) |
-| **Built with** | Agent Skills format, Notion MCP, Python standard library, built with Claude Code and Codex |
+| **Target user** | Anyone learning technical topics through AI chats, starting with me |
+| **Built with** | Agent Skills format, Notion MCP, Python standard library |
 | **Status** | v0.1, run end to end in the Claude app with Notion; multi-week validation in progress |
 
 ## Problem statement
@@ -31,11 +31,10 @@ without asking the learner to remember any extra step?**
 
 ## Why I built it
 
-I am preparing for senior BI and data engineering roles, and most of my
-learning happens in conversations with Claude and ChatGPT. I noticed I was
-re-asking questions I had already asked weeks earlier, such as how consumer
-groups split messages, and I could not tell whether I had ever understood
-them. My notes, when I made them at all, were summaries that did not help me
+Most of my learning happens in conversations with Claude and ChatGPT. I
+noticed I was re-asking questions I had already asked weeks earlier, such as
+how consumer groups split messages, and I could not tell whether I had ever
+understood them. My notes, when I made them at all, were summaries that did not help me
 answer an interview question or design a pipeline.
 
 The tools I tried each solved one piece: note apps store text, flashcard
@@ -60,8 +59,8 @@ ignore on its own:
    is where I got stuck and what finally made it click. Cleaned-up notes
    removed exactly that.
 4. **Learning stayed separate from the job.** I would understand a concept and
-   still not know how it is asked in a data engineering interview, or how to
-   use it in a project.
+   still not know how it is asked in interviews, or how to use it in a
+   project.
 5. **I did not remember the next step.** Practice, review and applying the
    topic all depended on me remembering to do them. Mostly I did not.
 
