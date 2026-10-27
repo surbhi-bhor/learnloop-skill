@@ -270,25 +270,25 @@ questions and a review reminder. I often skipped all of it.
 
 | Step | Old manual way | With LearnLoop |
 |---|---|---|
-| Copy useful parts of the chat into Notion | 5–10 min | Automatic |
-| Format the page: title, headings, callouts, code blocks | 15–20 min | Automatic |
-| Organize explanations into toggle lists | 5–10 min | Automatic |
-| Make a diagram or comparison table | 5–10 min | Automatic |
-| Make 8–10 flashcards | 10–15 min | Automatic |
-| Find interview questions for the topic | 8–10 min | Automatic |
-| Come up with a practice drill or project | 5–8 min | Automatic |
+| Copy useful parts of the chat into Notion | 5-10 min | Automatic |
+| Format the page: title, headings, callouts, code blocks | 15-20 min | Automatic |
+| Organize explanations into toggle lists | 5-10 min | Automatic |
+| Make a diagram or comparison table | 5-10 min | Automatic |
+| Make 8-10 flashcards | 10-15 min | Automatic |
+| Find interview questions for the topic | 8-10 min | Automatic |
+| Come up with a practice drill or project | 5-8 min | Automatic |
 | Set a review reminder | 2 min | Automatic |
 | Check old notes for repeated doubts | 5 min | Automatic |
 | Confirm what I was stuck on | n/a | ~1 min |
-| **Total per topic** | **60–90 min** | **~6 min** |
+| **Total per topic** | **60-90 min** | **~6 min** |
 
 ### Impact at 4 topics a week
 
 | | Old way | LearnLoop | Time saved |
 |---|---|---|---|
-| Per topic | 60–90 min | ~6 min | **54–84 min (90–93% less)** |
-| Per week | 4–6 hours | ~24 min | **3.5–5.5 hours** |
-| Per month | 16–24 hours | ~1.6 hours | **14–22 hours** |
+| Per topic | 60-90 min | ~6 min | **54-84 min (90-93% less)** |
+| Per week | 4-6 hours | ~24 min | **3.5-5.5 hours** |
+| Per month | 16-24 hours | ~1.6 hours | **14-22 hours** |
 
 ### What changed
 
