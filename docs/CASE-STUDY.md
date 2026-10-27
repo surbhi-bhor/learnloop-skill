@@ -258,6 +258,57 @@ The run also found three bugs, fixed the same day (the last two rows of the
 iterations table). Screenshots and the full note are in
 [examples/kafka-consumer-groups](../examples/kafka-consumer-groups/).
 
+## Before and after
+
+Turning a learning chat into notes I could study from used to take longer
+than the learning itself. I copied the useful parts into Notion, then built
+the page by hand: title, headings, callouts, code blocks and toggle lists,
+selecting and converting each block. Then came flashcards, interview
+questions and a review reminder. I often skipped all of it.
+
+### Time per topic
+
+| Step | Old manual way | With LearnLoop |
+|---|---|---|
+| Copy useful parts of the chat into Notion | 5–10 min | Automatic |
+| Format the page: title, headings, callouts, code blocks | 15–20 min | Automatic |
+| Organize explanations into toggle lists | 5–10 min | Automatic |
+| Make a diagram or comparison table | 5–10 min | Automatic |
+| Make 8–10 flashcards | 10–15 min | Automatic |
+| Find interview questions for the topic | 8–10 min | Automatic |
+| Come up with a practice drill or project | 5–8 min | Automatic |
+| Set a review reminder | 2 min | Automatic |
+| Check old notes for repeated doubts | 5 min | Automatic |
+| Confirm what I was stuck on | n/a | ~1 min |
+| **Total per topic** | **60–90 min** | **~6 min** |
+
+### Impact at 4 topics a week
+
+| | Old way | LearnLoop | Time saved |
+|---|---|---|---|
+| Per topic | 60–90 min | ~6 min | **54–84 min (90–93% less)** |
+| Per week | 4–6 hours | ~24 min | **3.5–5.5 hours** |
+| Per month | 16–24 hours | ~1.6 hours | **14–22 hours** |
+
+### What changed
+
+- **More time learning, less time formatting.** Note admin used to take 50 to
+  60% of a study session. Now about 90% of it is learning.
+- **Nine manual steps became one command.** I no longer have to remember to
+  make flashcards, find practice or set reviews; LearnLoop does it and tells
+  me what to do next.
+- **Every note is consistent.** The same structure every time, with no
+  fiddling with Notion blocks.
+- **Repeat doubts get caught.** In testing, the same question came up under
+  Kafka, Spark and Debezium. LearnLoop flagged it each time and Times stuck
+  went from 1 to 3, a gap I would otherwise have missed.
+- **Practice is built in.** Every topic comes with interview questions and a
+  drill for my target role.
+
+Manual times are my estimate of the old workflow; LearnLoop times are
+measured from real runs (1.5 to 9 minutes, about 5 typical, plus about a
+minute to answer "stuck or exploring").
+
 ## How it works
 
 ```mermaid
