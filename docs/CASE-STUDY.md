@@ -34,8 +34,8 @@ without asking the learner to remember any extra step?**
 Most of my learning happens in conversations with Claude and ChatGPT. I
 noticed I was re-asking questions I had already asked weeks earlier, such as
 how consumer groups split messages, and I could not tell whether I had ever
-understood them. My notes, when I made them at all, were summaries that did not help me
-answer an interview question or design a pipeline.
+understood them. My notes, when I made them at all, were summaries that did
+not help me answer an interview question or design a pipeline.
 
 The tools I tried each solved one piece: note apps store text, flashcard
 apps schedule review, and AI chats explain well. None of them knew where I
