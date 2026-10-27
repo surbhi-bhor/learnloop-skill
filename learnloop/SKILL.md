@@ -160,7 +160,8 @@ facts; leave unknown measures bracketed and drafts unconfirmed.
 
 When the user asks what is due, to review a topic, or to retry a weak spot, read
 `references/review-schedule.md`. Select due topics and open weak spots from the
-Notion views, ask for recall before showing answers, then record the attempt.
+LearnLoop Learning Log and Weak Spots views (found as in "Finding the Notion
+workspace"); never read task lists or other databases in the workspace, ask for recall before showing answers, then record the attempt.
 Use the specified intervals; do not mark a record complete merely because it
 was opened. A weak spot closes only after a delayed teach-back passes.
 
@@ -319,8 +320,12 @@ For each confirmed repeat that is stuck again, update the existing Weak Spots
 row instead of creating a new one: add 1 to `Times stuck`, set `Last stuck on`
 today, add today's topic to `Seen in`, append today's questions to `Question
 trail` under the date, set `Status` Open, `Delayed teach-back` Not yet and
-`Next review` tomorrow. In the note, add the "Asked before" callout from the
-template. A repeat that is not stuck this time (the learner answered
+`Next review` tomorrow. Do this update before creating the note, then fetch
+the row and use the `Times stuck` it now holds in the note's "Asked before"
+callout (from the template). If the update fails (for example the app needs
+approval for `notion-update-page` and cannot get it), leave the count out of
+the callout and tell the learner in the report that the weak spot row was not
+updated and why. A repeat that is not stuck this time (the learner answered
 "exploring") is only mentioned in the note, not counted.
 
 For each concept the user confirmed as stuck, also create a Weak Spots row
