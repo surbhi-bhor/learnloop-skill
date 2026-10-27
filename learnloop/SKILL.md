@@ -49,7 +49,17 @@ connector they are named `notion-search`, `notion-fetch`,
 `notion-create-pages`, `notion-update-page`, `notion-query-data-sources`,
 `notion-create-database`, `notion-create-view`). Query one data source per
 call; querying several at once needs a paid Notion plan and fails on free
-ones. Some apps load connector
+ones. Free plans also cap SQL and rows-mode queries per hour. If a query fails
+with a usage limit, do not retry it: query the database's view URL in view
+mode instead (it is not capped), or fetch the database and read its rows. If
+that fails too, tell the learner the repeat check and due list could not run
+right now, never say a doubt is new or nothing is due, and carry on with the
+request.
+
+Dates: "today" is the learner's local date. Notion's `createdTime` and edit
+times are UTC and can fall on the previous or next day, so compare and quote
+the date properties (`Flagged on`, `Last stuck on`, `Date learned`, `Next
+review`) and never derive "yesterday" or "today" from a timestamp. Some apps load connector
 tools only on request. If only listing or calendar tools are visible, search
 for the missing ones by those exact names (for example a tool search for
 "notion-fetch notion-create-pages notion-update-page") before deciding they
