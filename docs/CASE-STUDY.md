@@ -182,9 +182,9 @@ The skill follows the open Agent Skills format, so the same folder installs in
 Claude, Claude Code, Codex, Gemini CLI and Cursor with `npx skills add`. For
 chat apps that cannot load skills, a paste-in prompt carries the same rules.
 It is built for my own use with a Claude subscription, so it is tested end to
-end with Claude only. I ran a few test passes in Codex to find bugs (see the
-iterations table), but the README markets it as a plain Agent Skill rather
-than listing tools I cannot keep testing.
+end with Claude only. I ran a few test passes in Codex to find bugs, but the
+README markets it as a plain Agent Skill rather than listing tools I cannot
+keep testing.
 
 It also fails gracefully: without Python it scores by hand with the same
 rules and labels the result; without Notion it gives the full note in the
@@ -210,52 +210,6 @@ a real gap, and the one I am least likely to catch myself.
 *Trade-off:* matching by meaning can produce false matches. The rule is that
 sharing a keyword is not enough; it must be the same question or the same
 misconception, and when unsure it does not count.
-
-## Iterations after first use
-
-Using the skill on real learning sessions changed it. Each change below came
-from something that went wrong or felt missing.
-
-| What I noticed | What changed |
-|---|---|
-| Notes were text only, harder to scan for visual learners | Every note now has a "Picture it" visual chosen by the shape of the idea: flowchart, sequence diagram, comparison table or before/after table |
-| Choosing Quiz or Flashcards replaced the detailed note | The detailed note is always written; formats are added after it |
-| The skill needed a config file with my Notion IDs, so nobody else could install it as-is | It now finds the workspace by name or offers to create one, and installs in any agent with `npx skills add` |
-| Some agents cannot run Python | Struggle is scored by hand with the same rules and labelled "Scored by hand, not by script" |
-| ChatGPT and Gemini web cannot load skills | The paste-in prompt was brought up to the same rules: signal table, stuck box, visuals, production section |
-| In the Claude app, the Notion tools sometimes did not load | The skill now names the exact tools to search for, and gives the note to paste when they still fail |
-| "Minutes to log" showed 12 seconds for a note drafted in an earlier attempt | The field is left empty when a note is only being saved, not measured end to end |
-| Notes said where a topic shows up in a job but not how it runs or breaks | "Apply it now" gained an "In production" part: real usage, a typical failure, and how to catch it |
-| Without a profile, notes guessed my target role | Profile import now reads the resume and portfolio, and mini-projects build on my own project |
-| I could re-ask an old doubt without anyone noticing | "Seen before" detection, described in decision 9 |
-| On the first real repeat, the skill spotted it but explained first and quoted the old rule, leaving the recall check for afterwards | It now asks first, waits, tests recall before explaining, and shows the old rule only after I try |
-| In a full end-to-end run, "teach me kafka consumer groups" was answered without loading the skill, so the recall check never ran, and a repeat doubt asked mid-chat was only noticed at `log this` | The skill now loads on any teach request or "I'm stuck", and checks Weak Spots for a repeat at the moment of confusion, not only when logging. A one-line reminder was not enough; it took an explicit step in the teach command (read Weak Spots, ask one recall question, wait) before the re-test passed |
-| The skill asked whether my own Profile page might belong to someone else | The Profile in the learner's own workspace is treated as theirs |
-| Claude Code and Codex did not load the skill on a plain "teach me X" (tested 2026-10-27). Codex also cited a wrong date for an old doubt, and Claude Code could not run the scorer when file writes were blocked | Rewrote the description to say what the skill is first (a coach that remembers past doubts) and to load it before answering any teach or stuck message; both tools then loaded it on plain "teach me X" and asked the recall question mid-chat. The recall line takes the date from the row's Flagged on field. The scorer reads JSON from stdin when files cannot be written |
-| During the Codex end-to-end test the free Notion plan ran out of hourly SQL queries, and a reply said "yesterday" for a doubt flagged today because Notion times are UTC | On a usage limit the skill now switches to view-mode queries or a database fetch, and if that fails it says the repeat check could not run instead of calling a doubt new. Dates come from date properties in the learner's local day, never from UTC timestamps |
-| Notes written by Codex were uneven: one Stuck note had no "Where I got stuck" box, a text diagram tagged as javascript, flashcard answers outside their toggles and no misconception recorded; the repeat note said "Times stuck: 2" while the weak spot row still held 1; and "teach me Spark broadcast joins" was offered a recall check because an unrelated Spark note existed | Before reporting, the skill now fetches what it wrote and checks the stuck box, diagram, toggles and repeat-row fields, and never states a Times stuck the row does not hold. Added the exact Notion toggle syntax, a rule that data moving between machines is drawn in mermaid, Source tool Other for Codex and other apps, and topic matching by subject rather than Area |
-| Second Codex run: a recall offer came from a 2024 personal dbt page outside LearnLoop, the struggle summary was prose without a table, a stated wrong belief was again not recorded, and "save everything ... to my notion" wrote before the learner replied. Chats B and C did not count as repeats, but the test was flawed: dbt incremental filters, Delta MERGE file rewrites and Snowflake view refresh are different doubts that share words, and the skill counts only the same question | Recall now counts only Learning Log and Weak Spots rows. The confirm message shows a concept table and the misconception it will record, and nothing is written until the learner replies. The repeat test was rewritten to ask one doubt (which rows a second incremental run processes) in three tools |
-| Third Codex run: the repeat was recognized mid-chat in both new tools with the right date, but the weak spot update failed ("requires approval, but approval policy is never" in non-interactive Codex) while the notes still said "Times stuck: 2". "what's due?" read a task list outside LearnLoop | The repeat row is now updated before the note is written, and the note uses the count the row actually holds; if the update fails, the count is left out and the learner is told why. Review reads only the LearnLoop views |
-| Bugs kept being found by hand in Chrome and Codex runs, after each push | Added behavior evals: two scripted chats run through the skill with Notion blocked, and 16 text checks on the confirm message and the note (concept table, misconception, nothing written before the reply, stuck box first, mermaid diagram, flashcard answers inside toggles). The first run caught a rubric example that contradicted the table rule and a flashcard example I had written with a tag Notion does not support; after the fixes all checks pass |
-
-## Evidence from a real run
-
-On 2026-10-26 I ran the whole loop in the Claude app with Notion connected,
-with one doubt repeated on purpose across three chats: Kafka, then Spark
-reading from Kafka, then Debezium CDC. The skill:
-
-- wrote the first note with two "Where I got stuck" boxes quoting my own
-  misconception ("a consumer group is basically a copy of the topic"), two
-  diagrams, an In production section and 12 flashcards, in 4.8 minutes;
-- matched the Spark doubt to the existing weak spot by meaning, not by topic
-  name, and raised Times stuck to 2 instead of creating a duplicate;
-- caught the Debezium doubt mid-chat, asked me to recall the rule before
-  explaining, and raised Times stuck to 3;
-- put that repeat doubt first when I asked what was due.
-
-The run also found three bugs, fixed the same day (the last two rows of the
-iterations table). Screenshots and the full note are in
-[examples/kafka-consumer-groups](../examples/kafka-consumer-groups/).
 
 ## Before and after
 
