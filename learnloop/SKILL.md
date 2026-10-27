@@ -268,7 +268,8 @@ the note, and offer to log it separately if the user wants.
   highest score among its concepts), `Re-ask count` (sum), `Flag verdict`,
   `Style used` (the first style used; Plain language first unless the chat
   clearly used another), `Styles tried`,
-  `Minutes to log`, `Source tool`, `Next review` (tomorrow, per
+  `Minutes to log`, `Source tool` (the app running this skill; use Other for
+  Codex, Cursor, Gemini CLI and any app not in the list), `Next review` (tomorrow, per
   `references/review-schedule.md`), `Review count` 0, `Teach-back result` Not
   attempted. Leave `Confidence`, `Last reviewed` and `Applied` empty; the user
   sets confidence and applied, and `review` sets the rest. Also set `Area`
@@ -276,6 +277,11 @@ the note, and offer to log it separately if the user wants.
   type` (Chat, Article, Course) and `Source link` when there is one.
 - Body: the full detailed note from the template, with its "Picture it"
   visual, the "Apply it now" section, and the extra format if one was chosen.
+  When any concept on the page was confirmed stuck, the page must open with
+  its "Where I got stuck" callout, before the summary, and the row must link
+  the weak spot in `Weak Spots`. Record a wrong belief the learner stated
+  ("so broadcast means both tables get sent everywhere?") as the
+  `Misconception`, in the callout and on the weak spot row.
 
 The learner will not always remember to practice, so create the practice
 records now instead of waiting for a `practice` command:
@@ -319,6 +325,14 @@ clicked`, `Rule to remember`, `Flagged on` today, `Status` Open,
 teach-back), `Review count` 0, `Times stuck` 1, `Last stuck on` today. Skip
 this for a concept that matched an existing row; that row was updated above.
 
+Before reporting, fetch the page and each weak spot row you touched and check:
+the stuck callout is first when the verdict is Stuck, the diagram rendered,
+flashcard answers sit inside their toggles, and each repeat row really shows
+the new `Times stuck`, today's `Last stuck on`, this page in `Seen in` and
+today's questions in `Question trail`. Fix anything missing. If a write
+failed and cannot be fixed, say so in the report, and never state a `Times
+stuck` value in the note or the reply that the row does not hold.
+
 ### 5. Report
 
 Reply with the Notion link, the number of weak spots recorded, and the minutes
@@ -349,7 +363,10 @@ is loaded:
   counts in one line if they are above zero.
 - When the learner starts on a topic (a `teach` request, or the first
   question on a new topic while the skill is loaded), search the Learning Log
-  and Weak Spots once for it. If they studied it before, say one line before
+  and Weak Spots once for it. Count it as studied before only when a row's
+  `Topic` covers the same subject, not just the same `Area` (an old Spark
+  Streaming note does not mean Spark broadcast joins were studied). If they
+  studied it before, say one line before
   explaining: "You studied <topic> on <date>. Want a 2-minute recall check
   first?" Then stop and wait for the answer; do not explain in the same
   message, because seeing the answer first defeats the recall. If they say

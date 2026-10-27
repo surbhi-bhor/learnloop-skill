@@ -156,6 +156,10 @@ Rules for visuals:
 
 - Use fenced `mermaid` code blocks; Notion renders them as diagrams. Keep each
   diagram under about 12 nodes with short labels, so it stays readable.
+- A text diagram goes in a plain code block or one tagged `text`, never a
+  programming language such as `javascript`, which colors it as code. Use a
+  text diagram only for memory and positions; data moving between machines
+  (executors, partitions, consumers) is a process, so draw it in mermaid.
 - The visual must show the real mechanism with real-looking values, not
   decoration. If an analogy is used, label the diagram with the real terms.
 - When the learner was stuck, draw the visual around the exact point of
@@ -178,7 +182,15 @@ after "Check yourself", not instead of the note:
 - **Flashcards**: `## Flashcards`, 8 to 12 cards, each a `<toggle>` whose title
   is the question and whose body is the answer, so the answer stays hidden
   until clicked (a two-column table shows answers at a glance and defeats
-  recall).
+  recall). The answer must be a child of the toggle, indented one tab under
+  it, or Notion shows it outside the toggle:
+
+  ```
+  <details>
+  <summary>Which table is copied to every executor?</summary>
+  	The small side. The big table stays split into partitions.
+  </details>
+  ```
 
 If the learner picks none, write the detailed note only. Set the `Format`
 property to the extra format, or Detailed when there is none.
