@@ -1,4 +1,0 @@
-interface:
-  display_name: "LearnLoop"
-  short_description: "Capture learning, practice, review, and connect skills to work"
-  default_prompt: "Use $learnloop to teach or capture this topic, check for confirmed weak spots, and suggest a next practice step."
