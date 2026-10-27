@@ -74,7 +74,13 @@ would give.
 Asking many questions about one topic can mean interest. The score is a
 suggestion, never a verdict. For every flagged concept, ask the user:
 
-> "You asked about **<concept>** <n> times<, and said "<quote>">. Were you stuck, or just exploring?"
+> | Concept | Score | Evidence |
+> |---|---|---|
+> | <concept> | <score> | asked <n> times; "<quote>" |
+>
+> Misconception: "<what the learner said>". <why it is wrong, one line>.
+>
+> Were you stuck on <concept>, or just exploring?
 
 - "Stuck": write the "Where I got stuck" block and a Weak Spots row.
 - "Just exploring": write a normal note and set `Flag verdict` to Just exploring.

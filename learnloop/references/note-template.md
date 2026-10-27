@@ -182,14 +182,15 @@ after "Check yourself", not instead of the note:
 - **Flashcards**: `## Flashcards`, 8 to 12 cards, each a `<toggle>` whose title
   is the question and whose body is the answer, so the answer stays hidden
   until clicked (a two-column table shows answers at a glance and defeats
-  recall). The answer must be a child of the toggle, indented one tab under
-  it, or Notion shows it outside the toggle:
+  recall). The first line inside the toggle is its title; the answer must come
+  before `</toggle>`, or Notion shows it outside the toggle:
 
   ```
-  <details>
-  <summary>Which table is copied to every executor?</summary>
-  	The small side. The big table stays split into partitions.
-  </details>
+  <toggle>
+  Which table is copied to every executor?
+
+  The small side. The big table stays split into partitions.
+  </toggle>
   ```
 
 If the learner picks none, write the detailed note only. Set the `Format`
